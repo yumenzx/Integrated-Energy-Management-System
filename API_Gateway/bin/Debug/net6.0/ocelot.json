@@ -1,0 +1,223 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/UserAuthentication/login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "DownstreamPathTemplate": "/api/UserAuthentication/login"
+    },
+    {
+      "UpstreamPathTemplate": "/api/UserAuthentication/register",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "DownstreamPathTemplate": "/api/UserAuthentication/register"
+    },
+    {
+      "UpstreamPathTemplate": "/api/UserAuthentication/registerByAdmin",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "DownstreamPathTemplate": "/api/UserAuthentication/registerByAdmin"
+    },
+    {
+      "UpstreamPathTemplate": "/api/UserAuthentication/getAllUsers",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "DownstreamPathTemplate": "/api/UserAuthentication/getAllUsers"
+    },
+    {
+      "UpstreamPathTemplate": "/api/UserAuthentication/updateCredentials",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "DownstreamPathTemplate": "/api/UserAuthentication/updateCredentials"
+    },
+    {
+      "UpstreamPathTemplate": "/api/UserAuthentication/deleteUser/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "DownstreamPathTemplate": "/api/UserAuthentication/deleteUser/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/UserAuthentication/verifyUserExistency/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "DownstreamPathTemplate": "/api/UserAuthentication/verifyUserExistency/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/getUserDevices",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/getUserDevices"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/getAllDevices",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/getAllDevices"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/insertDevice",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/insertDevice"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/updateDevice",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/updateDevice"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/deleteDevice/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/deleteDevice/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/mapDevice",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/mapDevice"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/unMapDevice",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/unMapDevice"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/unMapUserDevices",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/unMapUserDevices"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/getDeviceOwner/{deviceId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/getDeviceOwner/{deviceId}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Device/getUserDevices/{userId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Device/getUserDevices/{userId}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Consumption/getChartData",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7038
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Consumption/getChartData"
+    }
+  ],
+  "GlobalConfiguration": {
+
+  }
+}

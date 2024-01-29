@@ -1,0 +1,23 @@
+.admin-devices-table-id {
+    width: 10%;
+}
+
+.admin-devices-table-description {
+    width: 25%;
+}
+
+.admin-devices-table-address {
+    width: 25%;
+}
+
+.admin-devices-table-max-consumption {
+    width: 10%;
+}
+
+.admin-devices-table-owner {
+    width: 10%;
+}
+
+.admin-devices-table-options {
+    width: 20%;
+}

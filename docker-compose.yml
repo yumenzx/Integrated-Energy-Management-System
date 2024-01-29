@@ -1,0 +1,120 @@
+version: '3.8'
+services:
+  device_simulator:
+    build:
+      context: ./DeviceSimulator
+      dockerfile: Dockerfile
+  
+  rabbitmq_device_changes:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_device_changes_assignment3
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5673:5672"  # mapare port RabbitMQ din container la portul so
+      - "15673:15672"  # mapare port pentru interfata web
+
+  rabbitmq_device_measurements:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_device_measurements_assignment3
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5674:5672"  # mapare port RabbitMQ din container la portul so
+      - "15674:15672"  # mapare port pentru interfata web
+
+  api_gateway:
+    image: mcr.microsoft.com/dotnet/samples:aspnetapp
+    build:
+      context: ./API_Gateway
+      dockerfile: Dockerfile
+    ports:
+      - "7000:80" # mapare port 80 al containerului pe portul 7000 al so
+      - "7100:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=qwert
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ./https:/https/
+      
+  microservice_users:
+    build:
+      context: ./UserManagementMicroservice
+      dockerfile: Dockerfile
+    ports:
+      - "7001:80" # mapare port 80 al containerului pe portul 7001 al so
+    depends_on:
+      - users_database # asteapta ca baza de date a utilizatorilor sa fie disponibila
+      
+  microservice_devices:
+    build:
+      context: ./DeviceManagementMicroservice
+      dockerfile: Dockerfile
+    ports:
+      - "7002:80" # mapare port 80 al containerului pe portul 7002 al so
+    depends_on:
+      - devices_database # asteapta ca baza de date a dispozitivelor sa fie disponibila 
+      - rabbitmq_device_changes
+      
+  microservice_monitoring:
+    build:
+      context: ./MonitoringAndCommunicationMicroservice
+      dockerfile: Dockerfile
+    ports:
+      - "7003:80" # mapare port 80 al containerului pe portul 7003 al so
+    depends_on:
+      - monitoring_database # asteapta ca baza de date a masuratorilor sa fie disponibila
+      - rabbitmq_device_changes # astepta ca nu prea astepata
+      - rabbitmq_device_measurements # la fel si la asta
+      
+  microservice_chat:
+    build:
+      context: ./ChatMicroservice
+      dockerfile: Dockerfile
+    ports:
+      - "7004:80" # mapare port 80 al containerului pe portul 7004 al so
+      
+  users_database:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: usersDatabase
+      MYSQL_ROOT_PASSWORD: qwert
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./usersDatabase/usersDatabase.sql:/docker-entrypoint-initdb.d/usersDatabase.sql
+      
+  devices_database:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: devicesDatabase
+      MYSQL_ROOT_PASSWORD: qwert
+    ports:
+      - "3309:3306"
+    volumes:
+      - ./devicesDatabase/devicesDatabase.sql:/docker-entrypoint-initdb.d/devicesDatabase.sql
+      
+  monitoring_database:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: monitoringDatabase
+      MYSQL_ROOT_PASSWORD: qwert
+    ports:
+      - "3310:3306"
+    volumes:
+      - ./monitoringDatabase/monitoringDatabase.sql:/docker-entrypoint-initdb.d/monitoringDatabase.sql
+      
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80" # mapare port 80 al containerului pe portul 8080 al so
+
+networks:
+  default:
+    driver: bridge

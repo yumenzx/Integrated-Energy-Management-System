@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "qBa8nZTcaxys6QEWcMUhFOXzk9srbkKtrZLUBI4IXd8=",
+  "Source": "ChatMicroservice",
+  "BasePath": "_content/ChatMicroservice",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

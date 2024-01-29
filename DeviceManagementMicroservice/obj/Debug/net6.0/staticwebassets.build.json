@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "hgLYdTSgcf9GtNvX7lBD1CA1g1iYlDzBTy5GzUqAhRs=",
+  "Source": "DeviceManagementMicroservice",
+  "BasePath": "_content/DeviceManagementMicroservice",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
