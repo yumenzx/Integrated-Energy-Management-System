@@ -1,10 +1,6 @@
 version: '3.8'
 services:
-  device_simulator:
-    build:
-      context: ./DeviceSimulator
-      dockerfile: Dockerfile
-  
+
   rabbitmq_device_changes:
     image: rabbitmq:3-management
     container_name: rabbitmq_device_changes_assignment3
